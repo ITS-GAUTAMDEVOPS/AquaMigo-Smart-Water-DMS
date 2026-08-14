@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaMigo - Buy Now</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <!-- AquaMigo Logo -->
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logos/AquaMigo-LOGO-FOR-ALL.png') }}" 
+                     alt="AquaMigo Logo" class="logo-image">
+                <div class="logo-text-wrapper">
+                    <span class="logo-text"></span>
+                    <span class="logo-subtitle"></span>
+                </div>
+            </div>
+        </div>
+        
+      <nav class="sidebar-nav">
+            <a href="/" class="nav-item" data-page="dashboard">
+               
+                <span class="nav-label"><b>Dashboard</b></span>
+            </a>
+            <a href="/cart" class="nav-item" data-page="cart">
+                
+                <span class="nav-label"><b>Shopping Cart</b></span>
+            </a>
+            <a href="/buy-now" class="nav-item" data-page="buy-now">
+                
+                <span class="nav-label"><b>Buy Now</b></span>
+            </a>
+            <a href="/track" class="nav-item active" data-page="track">
+                
+                <span class="nav-label"><b>Track Order</b></span>
+            </a>
+            <a href="/history" class="nav-item" data-page="history">
+                
+                <span class="nav-label"><b>History</b></span>
+            </a>
+            <a href="/settings" class="nav-item" data-page="settings">
+                
+                <span class="nav-label"><b>Settings</b></span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-title">
+                <h1>Buy Now</h1>
+                <p class="subtitle">Quick purchase of premium water bottles</p>
+            </div>
+        </header>
+
+        <div class="page-container buy-now-container">
+            <!-- Products Section -->
+            <section class="buy-now-products">
+                <h2 class="section-title">Select Products</h2>
+                <div class="products-list" id="productsList">
+                </div>
+            </section>
+
+            <!-- Order Form -->
+            <section class="buy-now-form-section">
+                <div class="form-card">
+                    <h2 class="card-title">Order Details</h2>
+                    
+                    <form id="buyNowForm" class="buy-now-form">
+                        <!-- Customer Information -->
+                        <fieldset>
+                            <legend>Customer Information</legend>
+                            
+                            <div class="form-group">
+                                <label for="customerName">Name *</label>
+                                <input type="text" id="customerName" name="customer_name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="customerMobile">Mobile Number *</label>
+                                <input type="tel" id="customerMobile" name="customer_mobile" pattern="[0-9]{10}" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="deliveryAddress">Delivery Address *</label>
+                                <textarea id="deliveryAddress" name="delivery_address" rows="4" required></textarea>
+                            </div>
+                        </fieldset>
+                        
+                        <!-- Product Selection -->
+                        <fieldset>
+                            <legend>Product Selection</legend>
+                            <div id="productSelection" class="product-selection">
+                                <!-- Dynamically populated -->
+                            </div>
+                        </fieldset>
+                        
+                        <!-- Price Information -->
+                        <fieldset>
+                            <legend>Price Summary</legend>
+                            
+                            <div class="price-row">
+                                <span>Product Price</span>
+                                <span id="productPrice">₹0</span>
+                            </div>
+                            <div class="price-row">
+                                <span>Shipping</span>
+                                <span>₹50</span>
+                            </div>
+                            <div class="price-row total">
+                                <span>Total Amount</span>
+                                <span id="totalAmount">₹50</span>
+                            </div>
+                        </fieldset>
+                        
+                        <!-- Payment Method -->
+                        <fieldset>
+                            <legend>Payment Method</legend>
+                            
+                            <div class="form-group">
+                                <label for="paymentMethod">Select Payment Method *</label>
+                                <div class="select-wrap">
+                                    <select id="paymentMethod" name="payment_method" required>
+                                        <option value="" selected disabled>Choose Payment Method</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                        <option value="Debit Card">Debit Card</option>
+                                        <option value="UPI">UPI</option>
+                                        <option value="Cash on Delivery">Cash on Delivery</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <button type="reset" class="btn btn-secondary">Clear Form</button>
+                            <button type="submit" class="btn btn-primary btn-large">Place Order</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- Order Confirmation Modal -->
+        <div id="confirmationModal" class="modal">
+            <div class="modal-content confirmation-content">
+                <div class="confirmation-icon">✓</div>
+                <h2>Order Confirmed!</h2>
+                <p class="confirmation-message">Your order has been successfully placed.</p>
+                
+                <div class="confirmation-details">
+                    <div class="detail-row">
+                        <span class="label">Order ID:</span>
+                        <span class="value" id="confirmedOrderId">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Total Amount:</span>
+                        <span class="value" id="confirmedAmount">₹0</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Estimated Delivery:</span>
+                        <span class="value" id="estimatedDelivery">-</span>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn btn-primary" id="trackOrderBtn">Track Order</button>
+                    <button class="btn btn-secondary" id="continueShoppingBtn">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/buy-now.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaMigo - Order History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <!-- AquaMigo Logo -->
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logos/AquaMigo-LOGO-FOR-ALL.png') }}" 
+                     alt="AquaMigo Logo" class="logo-image">
+                <div class="logo-text-wrapper">
+                    <span class="logo-text"></span>
+                    <span class="logo-subtitle"></span>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="/" class="nav-item" data-page="dashboard">
+               
+                <span class="nav-label"><b>Dashboard</b></span>
+            </a>
+            <a href="/cart" class="nav-item" data-page="cart">
+                
+                <span class="nav-label"><b>Shopping Cart</b></span>
+            </a>
+            <a href="/buy-now" class="nav-item" data-page="buy-now">
+                
+                <span class="nav-label"><b>Buy Now</b></span>
+            </a>
+            <a href="/track" class="nav-item active" data-page="track">
+                
+                <span class="nav-label"><b>Track Order</b></span>
+            </a>
+            <a href="/history" class="nav-item" data-page="history">
+                
+                <span class="nav-label"><b>History</b></span>
+            </a>
+            <a href="/settings" class="nav-item" data-page="settings">
+                
+                <span class="nav-label"><b>Settings</b></span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-title">
+                <h1>Order History</h1>
+                <p class="subtitle">View all your previous orders</p>
+            </div>
+        </header>
+
+        <div class="page-container history-container">
+            <!-- Filters Section -->
+            <section class="filters-section">
+                <div class="filter-group">
+                    <label for="filterStatus">Filter by Status</label>
+                    <select id="filterStatus">
+                        <option value="">All Status</option>
+                        <option value="Placed">Placed</option>
+                        <option value="Confirmed">Confirmed</option>
+                        <option value="Out for Delivery">Out for Delivery</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="searchOrder">Search Order ID</label>
+                    <input type="text" id="searchOrder" placeholder="Enter Order ID">
+                </div>
+            </section>
+
+            <!-- Orders List -->
+            <section class="orders-section">
+                <div class="orders-container" id="ordersContainer">
+                    <div class="loading-spinner">Loading order history...</div>
+                </div>
+            </section>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">📋</div>
+                <h2>No Orders Found</h2>
+                <p>You haven't placed any orders yet. Start shopping now!</p>
+                <a href="/buy-now" class="btn btn-primary">Browse Products</a>
+            </div>
+        </div>
+
+        <!-- Order Details Modal -->
+        <div id="orderDetailsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Order Details</h2>
+                    <button class="modal-close" id="closeModal">&times;</button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="detail-section">
+                        <h3>Order Information</h3>
+                        <div class="detail-row">
+                            <span class="label">Order ID:</span>
+                            <span class="value" id="modalOrderId">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Order Date:</span>
+                            <span class="value" id="modalOrderDate">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Total Amount:</span>
+                            <span class="value" id="modalTotalAmount">₹0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Status:</span>
+                            <span class="value badge" id="modalStatus">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Items</h3>
+                        <table class="items-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modalItemsBody">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" id="closeModalBtn">Close</button>
+                    <button class="btn btn-primary" id="trackOrderFromHistory">Track Order</button>
+                    <button class="btn btn-danger" id="cancelOrderBtn" type="button">Cancel Order</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/history.js') }}"></script>
+</body>
+</html>

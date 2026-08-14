@@ -1,0 +1,516 @@
+/* AquaMigo - Responsive Design */
+
+/* ==================== TABLET (768px) ==================== */
+@media (max-width: 768px) {
+    :root {
+        --font-size-lg: 1rem;
+        --font-size-xl: 1.125rem;
+        --font-size-2xl: 1.25rem;
+        --spacing-lg: 1.25rem;
+        --spacing-xl: 1.5rem;
+        --spacing-2xl: 1.75rem;
+    }
+    
+    /* Layout */
+    .sidebar {
+        width: 250px;
+        padding: var(--spacing-md);
+    }
+    
+    .main-content {
+        margin-left: 250px;
+    }
+    
+    .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+        padding: var(--spacing-lg);
+    }
+    
+    .header-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    /* Navigation */
+    .sidebar-nav {
+        gap: 0;
+    }
+    
+    .nav-item {
+        padding: var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+    
+    .nav-label {
+        display: none;
+    }
+    
+    /* Dashboard */
+    .metrics-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .metric-card {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-md);
+    }
+    
+    .metric-icon {
+        margin: 0 auto;
+    }
+    
+    /* Products Grid */
+    .products-grid,
+    .products-list {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: var(--spacing-md);
+    }
+    
+    /* Page Container */
+    .page-container {
+        padding: var(--spacing-lg);
+    }
+    
+    /* Forms */
+    .form-actions {
+        justify-content: stretch;
+    }
+    
+    .form-actions .btn {
+        flex: 1;
+    }
+    
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        padding: var(--spacing-lg);
+    }
+    
+    /* Tables */
+    table {
+        font-size: var(--font-size-sm);
+    }
+    
+    th, td {
+        padding: var(--spacing-sm);
+    }
+    
+    /* Tracking */
+    .track-form {
+        flex-direction: column;
+    }
+    
+    .order-stepper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .stepper-connector {
+        display: none;
+    }
+}
+
+/* ==================== MOBILE (480px) ==================== */
+@media (max-width: 480px) {
+    :root {
+        --font-size-base: 0.938rem;
+        --font-size-lg: 1rem;
+        --font-size-xl: 1.125rem;
+        --font-size-2xl: 1.25rem;
+        --spacing-md: 0.75rem;
+        --spacing-lg: 1rem;
+        --spacing-xl: 1.25rem;
+        --spacing-2xl: 1.5rem;
+    }
+    
+    /* Main Layout */
+    body {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        flex-direction: row;
+        box-shadow: var(--shadow-md);
+        overflow-x: auto;
+        padding: var(--spacing-md);
+    }
+    
+    .sidebar-header {
+        padding: 0;
+        margin: 0;
+        border-bottom: none;
+    }
+    
+    .logo-text {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        min-height: auto;
+    }
+    
+    .sidebar-nav {
+        flex-direction: row;
+        padding: 0;
+        gap: var(--spacing-xs);
+        flex: 1;
+        margin-left: var(--spacing-md);
+    }
+    
+    .nav-item {
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-xs);
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .nav-label {
+        display: block;
+        font-size: var(--font-size-xs);
+    }
+    
+    .nav-icon {
+        font-size: var(--font-size-base);
+    }
+    
+    /* Header */
+    .top-header {
+        padding: var(--spacing-md);
+        flex-direction: column;
+    }
+    
+    .header-title h1 {
+        font-size: var(--font-size-lg);
+    }
+    
+    /* Content */
+    .page-container {
+        padding: var(--spacing-md);
+    }
+    
+    .dashboard-container {
+        padding: var(--spacing-md);
+    }
+    
+    /* Metrics */
+    .metrics-section,
+    .status-section {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .metric-card {
+        padding: var(--spacing-md);
+    }
+    
+    .metric-icon {
+        font-size: 2rem;
+    }
+    
+    .metric-value {
+        font-size: var(--font-size-xl);
+    }
+    
+    /* Products */
+    .products-grid,
+    .products-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .product-image {
+        height: 150px;
+        font-size: 2rem;
+    }
+    
+    .product-info {
+        padding: var(--spacing-md);
+    }
+    
+    .product-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .product-actions .btn {
+        padding: var(--spacing-sm);
+    }
+    
+    /* Cart Layout */
+    .page-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .products-section,
+    .cart-summary-section,
+    .buy-now-form-section {
+        grid-column: 1;
+    }
+    
+    .cart-summary-section,
+    .buy-now-form-section {
+        position: static;
+        margin-top: var(--spacing-lg);
+    }
+    
+    .buy-now-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Forms */
+    .form-group {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+    
+    .btn-small {
+        padding: var(--spacing-sm);
+    }
+    
+    .btn-large {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    /* Modal */
+    .modal-content {
+        width: 98%;
+        padding: var(--spacing-md);
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .modal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .modal-header h2 {
+        font-size: var(--font-size-lg);
+    }
+    
+    .modal-close {
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .modal-actions .btn {
+        width: 100%;
+    }
+    
+    /* Tables */
+    .orders-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .orders-table {
+        font-size: var(--font-size-xs);
+    }
+    
+    th, td {
+        padding: var(--spacing-sm);
+    }
+    
+    /* Filters */
+    .filters-section {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+    
+    /* Tracking */
+    .track-container {
+        max-width: 100%;
+    }
+    
+    .track-form {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .track-form .form-group {
+        margin-bottom: 0;
+    }
+    
+    .order-stepper {
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md) 0;
+    }
+    
+    .stepper-step {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: flex-start;
+    }
+    
+    .step-circle {
+        width: 40px;
+        height: 40px;
+        font-size: var(--font-size-sm);
+    }
+    
+    /* Settings */
+    .settings-tabs {
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+    
+    .tab-btn {
+        flex: 1;
+        min-width: 80px;
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-xs);
+        gap: 0;
+    }
+    
+    .tab-btn .tab-icon {
+        display: block;
+    }
+    
+    /* Toast */
+    .toast {
+        width: calc(100% - var(--spacing-lg) * 2);
+        max-width: 300px;
+        bottom: var(--spacing-md);
+        right: var(--spacing-md);
+        left: var(--spacing-md);
+    }
+    
+    /* Sidebar Header on Mobile */
+    .sidebar-header .logo {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .logo-icon {
+        font-size: var(--font-size-xl);
+    }
+}
+
+/* ==================== SMALL MOBILE (360px) ==================== */
+@media (max-width: 360px) {
+    .products-grid,
+    .products-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .metric-card {
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .product-actions {
+        flex-direction: column;
+    }
+    
+    .quantity-input {
+        width: 60px;
+    }
+}
+
+/* ==================== LANDSCAPE ==================== */
+@media (max-height: 500px) and (orientation: landscape) {
+    .sidebar {
+        height: 100vh;
+        overflow-y: auto;
+    }
+    
+    .sidebar-nav {
+        gap: 0;
+    }
+    
+    .top-header {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .page-container {
+        padding: var(--spacing-md);
+    }
+}
+
+/* ==================== HIGH DPI SCREENS ==================== */
+@media (min-resolution: 2dppx) {
+    body {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+}
+
+/* ==================== PRINT STYLES ==================== */
+@media print {
+    .sidebar,
+    .top-header,
+    .header-actions,
+    .modal,
+    .toast,
+    .btn {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    .card,
+    table {
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+    }
+}
+
+/* White theme is the default and should remain active across the application. */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #111827;
+        --text-secondary: #4b5563;
+        --text-light: #6b7280;
+        --bg-color: #ffffff;
+        --white: #ffffff;
+        --secondary-color: #f3f6fb;
+        --border-color: #e5e7eb;
+    }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaMigo - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <!-- AquaMigo Logo -->
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logos/AquaMigo-LOGO-FOR-ALL.png') }}" 
+                     alt="AquaMigo Logo" class="logo-image">
+                <div class="logo-text-wrapper">
+                    <span class="logo-text"></span>
+                    <span class="logo-subtitle"></span>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="/" class="nav-item" data-page="dashboard">
+               
+                <span class="nav-label"><b>Dashboard</b></span>
+            </a>
+            <a href="/cart" class="nav-item" data-page="cart">
+                
+                <span class="nav-label"><b>Shopping Cart</b></span>
+            </a>
+            <a href="/buy-now" class="nav-item" data-page="buy-now">
+                
+                <span class="nav-label"><b>Buy Now</b></span>
+            </a>
+            <a href="/track" class="nav-item active" data-page="track">
+                
+                <span class="nav-label"><b>Track Order</b></span>
+            </a>
+            <a href="/history" class="nav-item" data-page="history">
+                
+                <span class="nav-label"><b>History</b></span>
+            </a>
+            <a href="/settings" class="nav-item" data-page="settings">
+                
+                <span class="nav-label"><b>Settings</b></span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-title">
+                <h1>Dashboard</h1>
+                <div class="header-meta">
+                    <span class="header-meta-text" id="lastUpdated">Updated just now</span>
+                </div>
+                <p class="subtitle"><b>Welcome to AquaMigo </b>  </br><h4> Made with 💗 By GAUTAM KUMAR Built during my Internship at Talking Crooks IT Pvt. Ltd.</h4> </p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-refresh" id="refreshBtn" title="Refresh">
+                    <span>⟳</span> <b>Refresh</b>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-container dashboard-shell">
+            <!-- Key Metrics -->
+            <section class="metrics-section">
+                <div class="metric-card">
+                    <div class="metric-icon customers">👥</div>
+                    <div class="metric-content">
+                        <h3 class="metric-label">Total Customers</h3>
+                        <p class="metric-value" id="totalCustomers">4</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon bottles">💧</div>
+                    <div class="metric-content">
+                        <h3 class="metric-label">Bottles Sold</h3>
+                        <p class="metric-value" id="totalBottles">8</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon orders">📦</div>
+                    <div class="metric-content">
+                        <h3 class="metric-label">Total Orders</h3>
+                        <p class="metric-value" id="totalOrders">3</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon revenue">₹</div>
+                    <div class="metric-content">
+                        <h3 class="metric-label">Total Revenue</h3>
+                        <p class="metric-value" id="totalRevenue">₹350</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status Overview -->
+            <section class="status-section">
+                <div class="status-card delivered">
+                    <h3>Delivered</h3>
+                    <p class="status-value" id="deliveredOrders">0</p>
+                </div>
+                <div class="status-card pending">
+                    <h3>Pending</h3>
+                    <p class="status-value" id="pendingOrders">0</p>
+                </div>
+                <div class="status-card alert">
+                    <h3>Low Stock Alert</h3>
+                    <p class="status-value" id="lowStockAlerts">0</p>
+                </div>
+            </section>
+
+            <!-- Charts and Recent Orders -->
+            <section class="charts-section">
+                <!-- Monthly Sales Chart -->
+                <div class="chart-card">
+                    <h2 class="card-title">Monthly Sales</h2>
+                    <div class="chart-container">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="recent-orders-card">
+                    <h2 class="card-title">Recent Orders</h2>
+                    <div class="orders-table-container">
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentOrdersBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

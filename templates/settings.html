@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaMigo - Settings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <!-- AquaMigo Logo -->
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logos/AquaMigo-LOGO-FOR-ALL.png') }}" 
+                     alt="AquaMigo Logo" class="logo-image">
+                <div class="logo-text-wrapper">
+                    <span class="logo-text"></span>
+                    <span class="logo-subtitle"></span>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="/" class="nav-item" data-page="dashboard">
+               
+                <span class="nav-label"><b>Dashboard</b></span>
+            </a>
+            <a href="/cart" class="nav-item" data-page="cart">
+                
+                <span class="nav-label"><b>Shopping Cart</b></span>
+            </a>
+            <a href="/buy-now" class="nav-item" data-page="buy-now">
+                
+                <span class="nav-label"><b>Buy Now</b></span>
+            </a>
+            <a href="/track" class="nav-item active" data-page="track">
+                
+                <span class="nav-label"><b>Track Order</b></span>
+            </a>
+            <a href="/history" class="nav-item" data-page="history">
+                
+                <span class="nav-label"><b>History</b></span>
+            </a>
+            <a href="/settings" class="nav-item" data-page="settings">
+                
+                <span class="nav-label"><b>Settings</b></span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-title">
+                <h1>Settings</h1>
+                <p class="subtitle">Manage your profile and preferences</p>
+            </div>
+        </header>
+
+        <div class="page-container settings-container">
+            <div class="profile-hero">
+                <div class="profile-avatar">GK</div>
+                <div class="profile-summary">
+                    <h2>GAUTAM KUMAR</h2>
+                    <p>Premium member • Active account</p>
+                    <div class="profile-stats">
+                        <span>12 Orders</span>
+                        <span>4.9 Rating</span>
+                        <span>GREATER NOIDA WEST</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tabs -->
+            <div class="settings-tabs">
+                <button class="tab-btn active" data-tab="profile">
+                    <span class="tab-icon"></span> Profile
+                </button>
+                <button class="tab-btn" data-tab="notifications">
+                    <span class="tab-icon"></span> Notifications
+                </button>
+                <button class="tab-btn" data-tab="preferences">
+                    <span class="tab-icon"></span> Preferences
+                </button>
+                <button class="tab-btn" data-tab="about">
+                    <span class="tab-icon"></span> About
+                </button>
+            </div>
+
+            <!-- Profile Tab -->
+            <div class="tab-content active" id="profile-tab">
+                <div class="settings-card">
+                    <h2 class="card-title">Profile Information</h2>
+                    
+                    <form id="profileForm" class="settings-form">
+                        <div class="form-group">
+                            <label for="profileName">Full Name</label>
+                            <input type="text" id="profileName" placeholder="Enter your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profileEmail">Email Address</label>
+                            <input type="email" id="profileEmail" placeholder="Enter your email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profileMobile">Mobile Number</label>
+                            <input type="tel" id="profileMobile" placeholder="Enter your mobile number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profileCity">City</label>
+                            <input type="text" id="profileCity" placeholder="Enter your city">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profileAddress">Delivery Address</label>
+                            <textarea id="profileAddress" rows="3" placeholder="Enter your delivery address"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profilePostalCode">Postal Code</label>
+                            <input type="text" id="profilePostalCode" placeholder="Enter postal code">
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Notifications Tab -->
+            <div class="tab-content" id="notifications-tab">
+                <div class="settings-card">
+                    <h2 class="card-title">Notification Preferences</h2>
+                    
+                    <form id="notificationsForm" class="settings-form">
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="orderPlaced" checked>
+                                <span>Order Placed Notifications</span>
+                            </label>
+                            <p class="help-text">Receive notifications when your order is placed</p>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="orderConfirmed" checked>
+                                <span>Order Confirmed Notifications</span>
+                            </label>
+                            <p class="help-text">Receive notifications when your order is confirmed</p>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="outForDelivery" checked>
+                                <span>Out for Delivery Notifications</span>
+                            </label>
+                            <p class="help-text">Receive notifications when order is out for delivery</p>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="delivered" checked>
+                                <span>Delivery Notifications</span>
+                            </label>
+                            <p class="help-text">Receive notifications when order is delivered</p>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="promotions" checked>
+                                <span>Promotional Emails</span>
+                            </label>
+                            <p class="help-text">Receive exclusive offers and promotions</p>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                            <button type="submit" class="btn btn-primary">Save Preferences</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Preferences Tab -->
+            <div class="tab-content" id="preferences-tab">
+                <div class="settings-card">
+                    <h2 class="card-title">Application Preferences</h2>
+                    
+                    <form id="preferencesForm" class="settings-form">
+                        <div class="form-group">
+                            <label for="defaultPayment">Default Payment Method</label>
+                            <select id="defaultPayment">
+                                <option value="">Select Payment Method</option>
+                                <option value="Credit Card">Credit Card</option>
+                                <option value="Debit Card">Debit Card</option>
+                                <option value="UPI">UPI</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="defaultLanguage">Language</label>
+                            <select id="defaultLanguage">
+                                <option value="en">English</option>
+                                <option value="hi">हिंदी (Hindi)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="theme">Theme</label>
+                            <select id="theme">
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                                <option value="auto">Auto</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Preferences</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- About Tab -->
+            <div class="tab-content" id="about-tab">
+                <div class="settings-card">
+                    <h2 class="card-title">About AquaMigo</h2>
+                    
+                    <div class="about-content">
+                        <div class="about-section">
+                            <h3>AquaMigo Premium Water Distribution</h3>
+                            <p>vAquaMigo is a premium water bottle distribution management system, thoughtfully designed to make ordering, managing, and delivering water simpler, smarter, and more seamless. 💙💧</p>
+                        </div>
+                        
+                        <div class="about-section">
+                            <h3>Version Information</h3>
+                            <div class="detail-row">
+                                <span>Application Version:</span>
+                                <span>1.0.0</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Last Updated:</span>
+                                <span id="lastUpdated">August 2026</span>
+                            </div>
+                        </div>
+                        
+                        <div class="about-section">
+                            <h3>Contact & Support</h3>
+                            <div class="detail-row">
+                                <span>Email:</span>
+                                <span><a href="mailto:gautam.kumar.devops@gmail.com">gautam.kumar.devops@gmail.com</a></span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Phone:</span>
+                                <span><a href="tel:+91 7838xxx82xxx">+91 7838xxx82xxx</a></span>
+                            </div>
+                        </div>
+                        
+                        <div class="about-section">
+                            <h3>Features</h3>
+                            <ul class="features-list">
+                                <li>✓ Easy product browsing and selection</li>
+                                <li>✓ Shopping cart management</li>
+                                <li>✓ Direct purchase option</li>
+                                <li>✓ Real-time order tracking</li>
+                                <li>✓ Order history and management</li>
+                                <li>✓ Multiple payment options</li>
+                                <li>✓ Comprehensive analytics dashboard</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+</body>
+</html>

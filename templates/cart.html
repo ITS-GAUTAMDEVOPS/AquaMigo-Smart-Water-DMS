@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaMigo - Shopping Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <!-- AquaMigo Logo -->
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logos/AquaMigo-LOGO-FOR-ALL.png') }}" 
+                     alt="AquaMigo Logo" class="logo-image">
+                <div class="logo-text-wrapper">
+                    <span class="logo-text"></span>
+                    <span class="logo-subtitle"></span>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="/" class="nav-item" data-page="dashboard">
+               
+                <span class="nav-label"><b>Dashboard</b></span>
+            </a>
+            <a href="/cart" class="nav-item" data-page="cart">
+                
+                <span class="nav-label"><b>Shopping Cart</b></span>
+            </a>
+            <a href="/buy-now" class="nav-item" data-page="buy-now">
+                
+                <span class="nav-label"><b>Buy Now</b></span>
+            </a>
+            <a href="/track" class="nav-item active" data-page="track">
+                
+                <span class="nav-label"><b>Track Order</b></span>
+            </a>
+            <a href="/history" class="nav-item" data-page="history">
+                
+                <span class="nav-label"><b>History</b></span>
+            </a>
+            <a href="/settings" class="nav-item" data-page="settings">
+                
+                <span class="nav-label"><b>Settings</b></span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-title">
+                <h1>Shopping Cart</h1>
+                <p class="subtitle">Browse and add water bottles to your cart</p>
+            </div>
+        </header>
+
+        <div class="page-container">
+            <!-- Products Section -->
+            <section class="products-section">
+                <h2 class="section-title">Available Products</h2>
+                <div class="products-grid" id="productsGrid">
+                </div>
+            </section>
+
+            <!-- Cart Summary -->
+            <section class="cart-summary-section">
+                <div class="cart-summary-card">
+                    <h2 class="card-title">Your Cart</h2>
+                    <div id="cartItemsContainer" class="cart-items-container">
+                        <p class="empty-message">Your cart is empty</p>
+                    </div>
+                    
+                    <div class="cart-totals">
+                        <div class="total-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">₹0</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Shipping</span>
+                            <span id="shipping">₹50</span>
+                        </div>
+                        <div class="total-row final">
+                            <span>Total</span>
+                            <span id="cartTotal">₹50</span>
+                        </div>
+                    </div>
+                    
+                    <div class="cart-actions">
+                        <button class="btn btn-secondary" id="continueShopping">Continue Shopping</button>
+                        <button class="btn btn-primary" id="checkoutBtn">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Checkout Modal -->
+        <div id="checkoutModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Checkout</h2>
+                    <button class="modal-close" id="closeModal">&times;</button>
+                </div>
+                
+                <form class="checkout-form" id="checkoutForm">
+                    <div class="form-group">
+                        <label for="customerName">Customer Name *</label>
+                        <input type="text" id="customerName" name="customer_name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerMobile">Mobile Number *</label>
+                        <input type="tel" id="customerMobile" name="customer_mobile" pattern="[0-9]{10}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="deliveryAddress">Delivery Address *</label>
+                        <textarea id="deliveryAddress" name="delivery_address" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="paymentMethod">Payment Method *</label>
+                        <select id="paymentMethod" name="payment_method" required>
+                            <option value="">Select Payment Method</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Debit Card">Debit Card</option>
+                            <option value="UPI">UPI</option>
+                            <option value="Cash on Delivery">Cash on Delivery</option>
+                        </select>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelCheckout">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Place Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+</body>
+</html>
