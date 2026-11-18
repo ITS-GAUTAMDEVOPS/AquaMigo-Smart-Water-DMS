@@ -2,6 +2,13 @@
 
 A full-stack web application for managing water bottle products, customers, orders, deliveries, payments, and order history.
 
+### UI Preview:
+## Dashboard
+<img width="1358" height="813" alt="DASHBOARD-WITH-DETAILS" src="https://github.com/user-attachments/assets/ab193c8c-98a6-4e3f-8886-5596bfbef5c2" />
+
+## Order confirmation
+<img width="1358" height="621" alt="CNF-ORDER" src="https://github.com/user-attachments/assets/bb6531e4-2135-45e6-9a7f-971fd303b02d" />
+
 ## Overview
 
 AquaMigo provides a centralized system for managing daily water distribution operations, including:
