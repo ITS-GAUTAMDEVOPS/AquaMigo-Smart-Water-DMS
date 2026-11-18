@@ -231,3 +231,7 @@ The database uses primary keys, foreign keys, indexes, and timestamps for struct
 **Last Updated:** August 2026  
 **Status:** Production Ready
 
+## Project By:
+**GAUTAM KUMAR**
+**GIT HUB: ITS-GAUTAMDEVOPS**
+**Gmail: gautam.kumar.devops@gmail.com**
